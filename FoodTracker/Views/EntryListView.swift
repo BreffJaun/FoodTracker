@@ -35,6 +35,8 @@ struct EntryListView: View {
                 Section("Meals", isExpanded: $isMealsExpanded) {
                     ForEach(meals) { entry in
                         EntryListItemView(entries: $meals, entry: entry)
+//                        .listRowSeparator(.hidden)
+//                        .listRowBackground(Color.clear)
                             .padding(.vertical, 8) // manuel Padding
                             .listRowInsets(EdgeInsets()) // deletes te default Insets
                             .background(Color(.systemGroupedBackground))
@@ -78,7 +80,7 @@ struct EntryListView: View {
                     }
                 }
             }
-            .listStyle(.sidebar) // only style which os working for folfable lists. And also uppercase the headline.
+            .listStyle(.sidebar) // only style which is creating foldable lists. And also uppercase the headline.
 //            .border(.red)
         }
     }
