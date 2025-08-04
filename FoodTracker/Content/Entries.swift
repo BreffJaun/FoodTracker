@@ -37,3 +37,9 @@ let drinksList: [Entry] = [
     Entry(title: "Smoothie", calories: 200),
     Entry(title: "Orange Juice", calories: 110)
 ]
+
+let dessertsList: [Entry] = [
+    Entry(title: "Chocolate Cake", calories: 420),
+    Entry(title: "Apple Pie", calories: 350),
+    Entry(title: "Vanilla Ice Cream", calories: 250)
+]

@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct EntryListItemView: View {
+struct EntryListItemView2: View {
     
     @Binding var entries: [Entry]
     var entry: Entry
     
     var body: some View {
-        VStack(alignment: .leading/*, spacing: 4*/) {
+        VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(entry.title)
                     .font(.headline)
@@ -22,17 +22,17 @@ struct EntryListItemView: View {
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
-            .swipeActions {
-                Button(role: .destructive){
-                    if let i = entries.firstIndex(where: {$0.id == entry.id}) {
-                        entries.remove(at: i)
-                        print("Updated entries:")
-                        entries.forEach { print("- \($0)") }
-                    }
-                } label: {
-                    Label("Delete", systemImage: "trash")
-                }
-            }
+//            .swipeActions {
+//                Button(role: .destructive){
+//                    if let i = entries.firstIndex(where: {$0.id == entry.id}) {
+//                        entries.remove(at: i)
+//                        print("Updated entries:")
+//                        entries.forEach { print("- \($0)") }
+//                    }
+//                } label: {
+//                    Label("Delete", systemImage: "trash")
+//                }
+//            }
             Text(entry.date, style: .date)
                 .font(.caption)
                 .foregroundColor(.gray)
@@ -42,7 +42,6 @@ struct EntryListItemView: View {
         .cornerRadius(10)
         .shadow(color: Color.black.opacity(0.05), radius: 2, x: 0, y: 1)
     }
-        
 }
 
 //#Preview {
