@@ -19,4 +19,9 @@ struct Entry: Identifiable, Equatable, CustomStringConvertible {
         dateFormatter.dateStyle = .medium
         return "\(title) – \(calories) kcal on \(dateFormatter.string(from: date))"
     }
+    
+    // MARK: NEW PROPERTIES
+    var mealTime: MealTime = .breakfast
+    var isFavorite: Bool = false
+    var mood: Mood = .neutral
 }

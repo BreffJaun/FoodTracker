@@ -11,6 +11,7 @@ struct EntryListItemView2: View {
     
     @Binding var entries: [Entry]
     var entry: Entry
+    @State var showEntryDetails: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
