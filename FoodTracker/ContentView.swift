@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            EntryListView()
+            EntryListView()  
         }
     }
 }
@@ -18,3 +18,7 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
+
+
+

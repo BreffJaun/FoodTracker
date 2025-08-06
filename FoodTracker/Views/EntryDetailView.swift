@@ -91,7 +91,7 @@ import SwiftUI
 struct EntryDetailView: View {
     
     @Binding var entry: Entry
-    @Binding var showEntryDetails: Bool
+//    @Binding var showEntryDetails: Bool
     
     var body: some View {
         ScrollView {
@@ -135,20 +135,21 @@ struct EntryDetailView: View {
                 .shadow(radius: 2)
                 .padding(.horizontal)
                 
-                Spacer()
-                
-                Button(action: {
-                    showEntryDetails.toggle()
-                }) {
-                    Text("Close")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.red.opacity(0.9))
-                        .foregroundColor(.white)
-                        .cornerRadius(12)
-                }
-                .padding(.horizontal)
-                .padding(.bottom)
+                // MARK: With Sheet
+//                Spacer()
+//                
+//                Button(action: {
+//                    showEntryDetails.toggle()
+//                }) {
+//                    Text("Close")
+//                        .frame(maxWidth: .infinity)
+//                        .padding()
+//                        .background(Color.red.opacity(0.9))
+//                        .foregroundColor(.white)
+//                        .cornerRadius(12)
+//                }
+//                .padding(.horizontal)
+//                .padding(.bottom)
             }
         }
     }
