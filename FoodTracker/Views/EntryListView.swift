@@ -9,11 +9,10 @@ import SwiftUI
 
 struct EntryListView: View {
     
-    @State var entries = entriesList
-    @State private var meals = mealsList
-    @State private var snacks = snacksList
-    @State private var drinks = drinksList
-    @State private var deserts = dessertsList
+    @Binding var meals: [Entry]
+    @Binding var snacks: [Entry]
+    @Binding var drinks: [Entry]
+    @Binding var deserts: [Entry]
     @State var isMealsExpanded = true
     @State var isSnacksExpanded = true
     @State var isDrinksExpanded = true

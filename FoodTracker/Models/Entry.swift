@@ -11,7 +11,7 @@ import Foundation
 struct Entry: Identifiable, Equatable, CustomStringConvertible {
     let id: UUID = UUID()
     var title: String
-    var date: Date = Date()
+    var date: Date
     var calories: Int
     
     var description: String {

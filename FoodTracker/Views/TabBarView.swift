@@ -7,23 +7,26 @@
 
 import SwiftUI
 
-struct TabView: View {
+struct TabBarView: View {
     
-    @State var entries = entriesList
+    @State private var meals = mealsList
+    @State private var snacks = snacksList
+    @State private var drinks = drinksList
+    @State private var deserts = dessertsList
     
     var body: some View {
         TabView {
             Tab("Calories", systemImage: "fork.knife.circle") {
-                DashboardView(entries: $entries)
+                DashboardView(meals: $meals, snacks: $snacks, drinks: $drinks, deserts: $deserts)
             }
             
             Tab("Entries", systemImage: "entry.lever.keypad") {
-                EntryListView(entries: $entries)
+                EntryListView(meals: $meals, snacks: $snacks, drinks: $drinks, deserts: $deserts)
             }
         }
     }
 }
 
-#Preview {
-    TabView()
-}
+//#Preview {
+//    TabBarView()
+//}

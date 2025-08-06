@@ -16,6 +16,7 @@ struct AddEntryView: View {
     @Binding var deserts: [Entry]
     
     @State var title: String = ""
+    @State private var date: Date = Date()
     @State var caloriesInput: String = ""
     @State var calories: Int = 0
     @State var entryCategory: EntryType = .deserts
@@ -28,6 +29,7 @@ struct AddEntryView: View {
         Form {
             Section(header: Text("New Entry")) {
                 TextField("Title", text: $title)
+                DatePicker("Date", selection: $date, displayedComponents: [.date])
                 TextField("Calories", text: $caloriesInput)
                     .keyboardType(.numberPad)
                 Picker("Entry Category", selection: $entryCategory) {
@@ -58,6 +60,7 @@ struct AddEntryView: View {
                     if let cal = Int(caloriesInput) {
                         let newEntry = Entry(
                             title: title,
+                            date: date,
                             calories: cal,
                             mealTime: mealTime,
                             isFavorite: isFavorite,

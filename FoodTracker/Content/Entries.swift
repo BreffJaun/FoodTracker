@@ -21,25 +21,26 @@ let entriesList: [Entry] = [
 ]
 
 let mealsList: [Entry] = [
-    Entry(title: "Breakfast - Oatmeal", calories: 350),
-    Entry(title: "Lunch - Chicken Salad", calories: 500),
-    Entry(title: "Dinner - Pasta", calories: 650)
+    Entry(title: "Breakfast - Oatmeal", date: Date(), calories: 350),
+    Entry(title: "Lunch - Chicken Salad", date: Date(), calories: 500),
+    Entry(title: "Dinner - Pasta", date: Date(), calories: 650)
 ]
 
 let snacksList: [Entry] = [
-    Entry(title: "Banana", calories: 90),
-    Entry(title: "Granola Bar", calories: 150),
-    Entry(title: "Yogurt", calories: 120)
+    Entry(title: "Banana", date: Date(), calories: 90),
+    Entry(title: "Granola Bar", date: Date(), calories: 150),
+    Entry(title: "Yogurt", date: Date(), calories: 120)
 ]
 
 let drinksList: [Entry] = [
-    Entry(title: "Coffee", calories: 60),
-    Entry(title: "Smoothie", calories: 200),
-    Entry(title: "Orange Juice", calories: 110)
+    Entry(title: "Coffee", date: Date(), calories: 60),
+    Entry(title: "Smoothie", date: Date(), calories: 200),
+    Entry(title: "Orange Juice", date: Date(), calories: 110)
 ]
 
 let dessertsList: [Entry] = [
-    Entry(title: "Chocolate Cake", calories: 420),
-    Entry(title: "Apple Pie", calories: 350),
-    Entry(title: "Vanilla Ice Cream", calories: 250)
+    Entry(title: "Chocolate Cake", date: Date(), calories: 420),
+    Entry(title: "Apple Pie", date: Date(), calories: 350),
+    Entry(title: "Vanilla Ice Cream", date: Date(), calories: 250)
 ]
+
