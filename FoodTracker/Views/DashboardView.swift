@@ -24,7 +24,6 @@ struct DashboardView: View {
             .reduce(0) { $0 + $1.calories }
     }
 
-    
     var totalMealCalories: Int { meals.reduce(0) { $0 + $1.calories } }
     var totalSnackCalories: Int { snacks.reduce(0) { $0 + $1.calories } }
     var totalDrinkCalories: Int { drinks.reduce(0) { $0 + $1.calories } }

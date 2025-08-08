@@ -23,36 +23,32 @@ struct EntryListView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
-//                Text("Calorie Tracker")
-//                    .font(.largeTitle)
-//                    .bold()
-//                    .padding(.horizontal, 16)
-                
-                Button {
-                    showDeleteAllAlert.toggle()
-                } label: {
-                    Text("Delete all")
-                        .padding()
-                        .padding(.horizontal, 8)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.red.opacity(0.8))
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-                .padding()
-                
-                Button {
-                    openAddSheet.toggle()
-                } label: {
-                    Text("Add entry")
-                        .padding()
-                        .padding(.horizontal, 8)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue.opacity(0.8))
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-                .padding()
+                // MARK: Buttons in toolbar packen
+//                Button {
+//                    showDeleteAllAlert.toggle()
+//                } label: {
+//                    Text("Delete all")
+//                        .padding()
+//                        .padding(.horizontal, 8)
+//                        .frame(maxWidth: .infinity)
+//                        .background(Color.red.opacity(0.8))
+//                        .foregroundColor(.white)
+//                        .cornerRadius(10)
+//                }
+//                .padding()
+//                
+//                Button {
+//                    openAddSheet.toggle()
+//                } label: {
+//                    Text("Add entry")
+//                        .padding()
+//                        .padding(.horizontal, 8)
+//                        .frame(maxWidth: .infinity)
+//                        .background(Color.blue.opacity(0.8))
+//                        .foregroundColor(.white)
+//                        .cornerRadius(10)
+//                }
+//                .padding()
                 
                 List {
                     Section("Meals", isExpanded: $isMealsExpanded) {
@@ -126,6 +122,24 @@ struct EntryListView: View {
                 Button("Cancel", role: .cancel) {}
             } message: {
                 Text("Do you really want to delete all entries?")
+            }
+            
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showDeleteAllAlert.toggle()
+                    } label: {
+                        Label("Delete all", systemImage: "trash.circle.fill")
+                    }
+                }
+                
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        openAddSheet.toggle()
+                    } label: {
+                        Label("Add entry", systemImage: "fork.knife.circle")
+                    }
+                }
             }
             
             .sheet(isPresented: $openAddSheet) {

@@ -25,6 +25,8 @@ struct AddEntryView: View {
     @State private var isFavorite: Bool = false
     
     
+    
+    
     var body: some View {
         Form {
             Section(header: Text("New Entry")) {

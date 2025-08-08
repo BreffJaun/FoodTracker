@@ -11,7 +11,7 @@ struct EntryListItemView: View {
     
     @Binding var entries: [Entry]
     @Binding var entry: Entry
-    @State var showEntryDetails = false
+//    @State var showEntryDetails = false
     
     var body: some View {
         

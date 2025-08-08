@@ -23,6 +23,10 @@ struct TabBarView: View {
             Tab("Entries", systemImage: "entry.lever.keypad") {
                 EntryListView(meals: $meals, snacks: $snacks, drinks: $drinks, deserts: $deserts)
             }
+            
+            Tab("Drink Day List", systemImage: "drop") {
+                HydrationDashboardView()
+            }
         }
     }
 }
