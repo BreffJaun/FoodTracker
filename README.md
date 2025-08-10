@@ -1,6 +1,6 @@
 # FoodTracker
 
-<img src=FoodTracker/Images/foodTracker width=75%>
+<img src=FoodTracker/Images/foodTracker.png width=75%>
 
 This SwiftUI app helps you keep a food diary by tracking the meals and drinks you consume. You can add, view, and delete entries to maintain a healthy lifestyle. 🍏
 
