@@ -13,6 +13,7 @@ struct TabBarView: View {
     @State private var snacks = snacksList
     @State private var drinks = drinksList
     @State private var deserts = dessertsList
+    @State private var drinkEntries = drinkDays
     
     var body: some View {
         TabView {
@@ -25,7 +26,7 @@ struct TabBarView: View {
             }
             
             Tab("Drink Day List", systemImage: "drop") {
-                HydrationDashboardView()
+                HydrationDashboardView(drinkEntries: $drinkEntries)
             }
         }
     }

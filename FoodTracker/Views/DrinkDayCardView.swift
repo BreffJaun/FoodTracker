@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct DrinkDayCardView: View {
-    var day: DrinkDay
+    
+    
+    @Binding var drinkEntries: [DrinkDay]
+    @Binding var day: DrinkDay
+    
     var onSelect: () -> Void
     
     var body: some View {
@@ -24,7 +28,6 @@ struct DrinkDayCardView: View {
             ProgressView(value: day.totalDrunk, total: day.goal)
                 .tint(progressColor)
             
-            // Einfach alle Drinks anzeigen
             ForEach(day.drinks, id: \.id) { drink in
                 HStack {
                     Text(drink.type.rawValue.capitalized)
@@ -48,6 +51,7 @@ struct DrinkDayCardView: View {
         .cornerRadius(12)
     }
     
+    
     private var progressColor: Color {
         let progress = day.totalDrunk / day.goal
         if progress >= 1.0 {
@@ -58,8 +62,6 @@ struct DrinkDayCardView: View {
             return .blue // Standardfarbe
         }
     }
-
-    
 }
 
 

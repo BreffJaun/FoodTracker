@@ -16,12 +16,21 @@ struct AddDrinkView: View {
     @State private var date: Date = Date()
     @State private var drinkType: DrinkType = .water
     
+    @State private var showAlert = false
+    
     
     var body: some View {
         Form {
             Section("Add new Drink") {
-                TextField("Amount", text: $amount)
+                TextField("Amount in ml", text: $amount)
                     .keyboardType(.numberPad)
+                    .onChange(of: amount) {
+                        // Filter only digits (0-9)
+                        let filtered = amount.filter { $0.isNumber }
+                        if filtered != amount {
+                            amount = filtered
+                        }
+                    }
                 DatePicker("Date", selection: $date, displayedComponents: [.date])
                 Picker("Drink Category", selection: $drinkType) {
                     ForEach(DrinkType.allCases, id: \.rawValue) { drink in
@@ -32,66 +41,31 @@ struct AddDrinkView: View {
             
             Section {
                 Button {
-                    showAddDrinkSheet.toggle()
+                    if let ml = Double(amount), ml > 0 {
+                        let newDrink = Drink(amount: ml, type: drinkType)
+                        if let i = drinkEntries.firstIndex(where: {
+                            Calendar.current.isDate($0.date, inSameDayAs: date)
+                        }) {
+                            drinkEntries[i].drinks.append(newDrink)
+                        } else {
+                            // New drinkDay
+                            let newDay = DrinkDay(date: date, goal: 2000, drinks: [newDrink])
+                            drinkEntries.append(newDay)
+                        }
+                        showAddDrinkSheet = false
+                    } else {
+                        showAlert = true
+                    }
                 } label: {
                     Text("Save")
                 }
             }
-            
-//
-//            Section(header: Text("Additional Info")) {
-//                Picker("Mealtime", selection: $mealTime) {
-//                    ForEach(MealTime.allCases) { time in
-//                        Text(time.rawValue).tag(time)
-//                    }
-//                }
-//
-//                Picker("Mood", selection: $mood) {
-//                    ForEach(Mood.allCases) { mood in
-//                        Text(mood.rawValue).tag(mood)
-//                    }
-//                }
-//
-//                Toggle("Favorite", isOn: $isFavorite)
-//            }
-//            
-//            Section {
-//                Button("Save Entry") {
-//                    if let cal = Int(caloriesInput) {
-//                        let newEntry = Entry(
-//                            title: title,
-//                            date: date,
-//                            calories: cal,
-//                            mealTime: mealTime,
-//                            isFavorite: isFavorite,
-//                            mood: mood
-//                        )
-//                        
-//                        switch entryCategory {
-//                            case .meals: meals.append(newEntry)
-//                            case .snacks: snacks.append(newEntry)
-//                            case .drinks: drinks.append(newEntry)
-//                            case .deserts: deserts.append(newEntry)
-//                        }
-//                        
-//                        title = ""
-//                        caloriesInput = ""
-//                        mealTime = .lunch
-//                        mood = .neutral
-//                        isFavorite = false
-//                        
-//                        openAddSheet = false
-//                        
-//                    } else {
-//                        print("Invalid calories input!")
-//                    }
-//                }
-//                Button("Cancel", role: .cancel) {
-//                    openAddSheet = false
-//                }
-//                .foregroundStyle(Color.red)
-//            }
         }
+        .alert("Invlaid input", isPresented: $showAlert, actions: {
+            Button("OK", role: .cancel) { }
+        }, message: {
+            Text("Please enter a valid quantity in ml.")
+        })
     }
 }
 

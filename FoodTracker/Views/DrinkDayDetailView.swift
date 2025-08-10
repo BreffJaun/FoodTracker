@@ -7,42 +7,14 @@
 
 import SwiftUI
 
-//struct DrinkDayDetailView: View {
-//    var day: DrinkDay
-//    
-//    var body: some View {
-//        VStack(alignment: .leading, spacing: 16) {
-//            Text(day.date.formatted(date: .long, time: .omitted))
-//                .font(.largeTitle)
-//                .bold()
-//            
-//            Text("Goal: \(Int(day.goal)) ml")
-//                .font(.title3)
-//            
-//            Text("Total drunk: \(Int(day.totalDrunk)) ml")
-//                .font(.title3)
-//            
-//            Divider()
-//            
-//            Text("Drinks")
-//                .font(.headline)
-//            
-//            List(day.drinks) { drink in
-//                HStack {
-//                    Text(drink.type.rawValue.capitalized)
-//                    Spacer()
-//                    Text("\(drink.amount, specifier: "%.1f") ml")
-//                }
-//            }
-//        }
-//        .padding()
-//        .navigationTitle("Day Details")
-//    }
-//}
-
 struct DrinkDayDetailView: View {
-    var day: DrinkDay
-
+    
+    @Binding var day: DrinkDay
+    @Binding var drinkEntries: [DrinkDay]
+    
+    @State private var drinkToDelete: Drink? = nil
+    @State private var showDeleteAlert = false
+    
     private var progressColor: Color {
         let progress = day.totalDrunk / day.goal
         if progress >= 1.0 {
@@ -82,10 +54,31 @@ struct DrinkDayDetailView: View {
                         Spacer()
                         Text("\(Int(drink.amount)) ml")
                     }
+                    .swipeActions {
+                        Button(role: .destructive) {
+                            drinkToDelete = drink
+                            showDeleteAlert = true
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
                 }
             }
         }
         .navigationTitle("Day Details")
+        .alert("Delete Drink?", isPresented: $showDeleteAlert, presenting: drinkToDelete) { drink in
+            Button("Delete", role: .destructive) {
+                if let dayIndex = drinkEntries.firstIndex(where: { $0.id == day.id }) {
+                    if let drinkIndex = drinkEntries[dayIndex].drinks.firstIndex(where: { $0.id == drink.id }) {
+                        drinkEntries[dayIndex].drinks.remove(at: drinkIndex)
+                    }
+                }
+            }
+
+            Button("Cancel", role: .cancel) {}
+        } message: { drink in
+            Text("Do you really want to delete this drink on day \(day.date.formatted(date: .abbreviated, time: .omitted))?")
+        }
     }
 }
 
