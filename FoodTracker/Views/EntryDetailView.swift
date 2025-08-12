@@ -7,91 +7,9 @@
 
 import SwiftUI
 
-import SwiftUI
-
-//struct EntryDetailView: View {
-//    
-//    @Binding var entry: Entry
-//    @Binding var showEntryDetails: Bool
-//    
-//    var body: some View {
-//        ScrollView {
-//            VStack(spacing: 20) {
-//                // Header
-//                Text("Entry Details")
-//                    .font(.title)
-//                    .bold()
-//                    .padding(.top)
-//                
-//                // Info Card
-//                VStack(alignment: .leading, spacing: 16) {
-//                    HStack {
-//                        Label("Title", systemImage: "pencil")
-//                            .font(.headline)
-//                        Spacer()
-//                        Text(entry.title)
-//                            .font(.body)
-//                            .foregroundColor(.primary)
-//                    }
-//                    
-//                    HStack {
-//                        Label("Calories", systemImage: "flame")
-//                            .font(.headline)
-//                        Spacer()
-//                        Text("\(entry.calories) kcal")
-//                            .font(.body)
-//                            .foregroundColor(.secondary)
-//                    }
-//                    
-//                    HStack {
-//                        Label("Date", systemImage: "calendar")
-//                            .font(.headline)
-//                        Spacer()
-//                        Text(entry.date, style: .date)
-//                            .font(.body)
-//                            .foregroundColor(.secondary)
-//                    }
-//                    
-//                    if !entry.description.isEmpty {
-//                        Divider()
-//                        Text("Description")
-//                            .font(.headline)
-//                        Text(entry.description)
-//                            .font(.body)
-//                            .foregroundColor(.primary)
-//                            .multilineTextAlignment(.leading)
-//                    }
-//                }
-//                .padding()
-//                .background(Color(.secondarySystemBackground) )
-//                .cornerRadius(12)
-//                .shadow(radius: 2)
-//                .padding(.horizontal)
-//                
-//                Spacer()
-//                
-//                Button(action: {
-//                    showEntryDetails.toggle()
-//                }) {
-//                    Text("Close")
-//                        .frame(maxWidth: .infinity)
-//                        .padding()
-//                        .background(Color.red.opacity(0.9))
-//                        .foregroundColor(.white)
-//                        .cornerRadius(12)
-//                }
-//                .padding(.horizontal)
-//                .padding(.bottom)
-//            }
-//        }
-//    }
-//}
-//
-
 struct EntryDetailView: View {
     
     @Binding var entry: Entry
-//    @Binding var showEntryDetails: Bool
     
     var body: some View {
         ScrollView {

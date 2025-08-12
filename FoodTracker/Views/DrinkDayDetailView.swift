@@ -39,8 +39,15 @@ struct DrinkDayDetailView: View {
             Section(header: Text("Total Drunk")) {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("\(Int(day.totalDrunk)) ml")
-                    ProgressView(value: day.totalDrunk, total: day.goal)
-                        .tint(progressColor)
+                    
+                    if day.goal > 0 {
+                        let safeValue = min(max(day.totalDrunk, 0), day.goal)
+                        ProgressView(value: safeValue, total: day.goal)
+                            .tint(progressColor)
+                    } else {
+                        Text("No goal set")
+                            .foregroundColor(.secondary)
+                    }
                 }
                 .padding(.vertical, 4)
             }
